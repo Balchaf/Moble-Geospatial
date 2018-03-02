@@ -18,84 +18,111 @@ Once you get your account, go to https://www.esri.com/landing-pages/appstudio do
 The first step is to change the center of the map to our area of interest, in my case, I am working for Tacoma city. Therefore, my center is point is X= -122.44, Y= 47.25.
 Before changing the viewpoint lets us as change the Basemap and Spatial reference
 
-### Change teh base Map and Spatial reference
-
-
+### Change the base Map and Spatial reference
+Then check the BasemapLayer used. In such kind of purpose, Street data is more relavant. Therefore, set you basemap to Basemap Streets
+The code is as follows; line 65 and 66
 
 ```
 Map { BasemapStreets {}
 
 ```
+We have to check the Spatial reference system used.  The default is web Mercator. In most cases our data might be different form web Mercator. For view point center I used WGS84. Therefore, lets change our spatial reference to WGS84
+To do so use the following code: 
 
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
+from
+```
+     spatialReference: SpatialReference.createWebMercator()
+```
+to
+```
+     spatialReference: SpatialReference.createWgs84()
+```
+### Change the View Point Center
+change the center of the map to our area of interest, in my case, I am working for Tacoma city. Therefore, my center is point is 
+X= -122.44, 
+Y= 47.25
+View point is set to be my new location as below
 
 ```
-Give the example
+initialViewpoint: ViewpointCenter {
+                        Point {
+                            x: -122.44
+                            y: 47.25
 ```
-
-And repeat
-
+### Adding Facility (Hospitals) locations
+The next part we do is inserting the point location of each facilities/Hospitals.
+Insert point data each hospital by creating the graphic geometry as an example below. 
+If you have many hospitals, you have to create as much number of hospitals you have.
+The code to do this is: 
 ```
-until finished
+Graphic {
+          geometry: Point {
+                            x: -122.45254
+                            y:  47.257
+         spatialReference: SpatialReference.createWgs84()
 ```
+Do this as many points/facilities you have
 
-End with an example of getting some data out of the system or using it for a little demo
+## Adding Network Data to the map:
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
+To locating closest serve, the app uses road network data. This data can be stored on the server or on the device. In most cases mobile devices access data from server using internet. Let us assume we are pulling data from server. To do so, we have to 
+Write the following code and change the url address by the url address where you stored your network data. In the example, the data come from ESRI rest service server. It is SanDiego city Road network data
 
 ```
-Give an example
+ClosestFacilityTask {
+                id: task
+                url: "http://sampleserver6.arcgisonline.com/arcgis/rest/services/NetworkAnalysis/SanDiego/NAServer/ClosestFacility"
+
+                onLoadStatusChanged: {
+                    if (loadStatus !== Enums.LoadStatusLoaded)
+                        return;
+
+                    setupRouting();
+
+                    function setupRouting() {
+                        busy = true;
+                        message = "";
+                        task.createDefaultParameters();
+                    }
+                }
+
+                onCreateDefaultParametersStatusChanged: {
+                    if (createDefaultParametersStatus !== Enums.TaskStatusCompleted)
+                        return;
+
+                    busy = false;
+                    facilityParams = createDefaultParametersResult;
+                    facilityParams.setFacilities(facilities);
+                }
+
+                onSolveClosestFacilityStatusChanged: {
+                    if (solveClosestFacilityStatus !== Enums.TaskStatusCompleted)
+                        return;
+
+                    busy = false;
+
+                    if (solveClosestFacilityResult === null || solveClosestFacilityResult.error)
+                        message = "Incident not within San Diego Area!";
+
+                    var rankedList = solveClosestFacilityResult.rankedFacilityIndexes(0);
+                    var closestFacilityIdx = rankedList[0];
+
+                    var incidentIndex = 0; // 0 since there is just 1 incident at a time
+                    var route = solveClosestFacilityResult.route(closestFacilityIdx, incidentIndex);
+
+                    var routeGraphic = ArcGISRuntimeEnvironment.createObject(
+                                "Graphic", { geometry: route.routeGeometry, symbol: routeSymbol});
+                    resultsOverlay.graphics.append(routeGraphic);
+                }
+
+                onErrorChanged: message = error.message;
+            }
 ```
+### Save and test for Errors
+Once you finished the code editing and writing
+1. Save your code
+2. Go to the apps gallery and open your app. If your app is built correctly, it will opens, if there is error in your code, error message outlining the code line where the error occured and possible cause of error will be displayed. Read the causes of the error, go back to the code and fix it.
+3. After fixing the error save your code and test it until you get rid of them. 
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+After finishing the above outlined steps, we will come up with mobile app having the basic functionality to find the closest hospital from a point. 
 
