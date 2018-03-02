@@ -6,11 +6,14 @@ In case of emergency, time have a big role in saving lives. Therefore, it is imp
 
 ## Get your ESRI Online account and Login into ESRI App Studio
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Once you get your account, go to https://www.esri.com/landing-pages/appstudio download and install Esri App Studio. Qt Creator (AppStudio for ArcGIS) will be installed with Esri App Studio. 
 
-### Prerequisites
+### Developing Closest Hospital finder Mobile app
 
-What things you need to install the software and how to install them
+1. Once the necessary applications are installed open Esri app studio on your desktop and login.
+2. On upper right corner click New App On the Tittle give name of your app, I gave mine “Closest Hospital”. 
+3. From the three items under starter, select Hello World (run time), then click on create to create your app. 
+4. Now go to the gallery and refresh. You should see your newly created app in ESRI App studio gallery. 
 
 ```
 Give examples
