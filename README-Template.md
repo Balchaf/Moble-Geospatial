@@ -1,4 +1,4 @@
-# Tutorial on how to build Qt.Mobile App to find Closest Facility
+# Tutorial how to build Mobile App using Qt to find Closest Facility
 # Lab4 
 
 Lab 4 Tutorial 2 Closest Facility How to Build closest hospital finder app in Esri App Studio Qt
