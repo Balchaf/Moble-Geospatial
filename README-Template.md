@@ -1,7 +1,6 @@
 # Tutorial how to build Mobile App using Qt to find Closest Facility
 # Lab4 
 
-Lab 4 Tutorial 2 Closest Facility How to Build closest hospital finder app in Esri App Studio Qt
 In case of emergency, time have a big role in saving lives. Therefore, it is important to identify the closest healthy facility from the incident which takes the minim time to arrive. Prerequisites To develop this Two_Maps screen, we have to have Esri online account and installed Esri App Studio on our machine. 
 
 ## Get your ESRI Online account and Login into ESRI App Studio
@@ -12,11 +11,20 @@ Once you get your account, go to https://www.esri.com/landing-pages/appstudio do
 
 1. Once the necessary applications are installed open Esri app studio on your desktop and login.
 2. On upper right corner click New App On the Tittle give name of your app, I gave mine “Closest Hospital”. 
-3. From the three items under starter, select Hello World (run time), then click on create to create your app. 
+3. From the three items under Sample, select Closest Facility, then click on create to create your app. 
 4. Now go to the gallery and refresh. You should see your newly created app in ESRI App studio gallery. 
+5. Now we created a mobile app with one map screen with the default buttons and basemap (Topographic basemap).
+6. After the app is created, we have to customize and make necessary changes according to our requirement.
+The first step is to change the center of the map to our area of interest, in my case, I am working for Tacoma city. Therefore, my center is point is X= -122.44, Y= 47.25.
+Before changing the viewpoint lets us as change the Basemap and Spatial reference
+
+### Change teh base Map and Spatial reference
+
+
 
 ```
-Give examples
+Map { BasemapStreets {}
+
 ```
 
 ### Installing
