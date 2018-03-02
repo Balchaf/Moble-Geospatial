@@ -3,7 +3,7 @@
 Lab 4 Tutorial 2 Closest Facility How to Build closest hospital finder app in Esri App Studio Qt
 In case of emergency, time have a big role in saving lives. Therefore, it is important to identify the closest healthy facility from the incident which takes the minim time to arrive. Prerequisites To develop this Two_Maps screen, we have to have Esri online account and installed Esri App Studio on our machine. 
 
-## Getting Started
+## Get your ESRI Online account and Login into ESRI App Studio
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
