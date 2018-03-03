@@ -66,7 +66,9 @@ Do this as many points/facilities you have
 ## Adding Network Data to the map:
 
 To locating closest serve, the app uses road network data. This data can be stored on the server or on the device. In most cases mobile devices access data from server using internet. Let us assume we are pulling data from server. To do so, we have to 
-Write the following code and change the url address by the url address where you stored your network data. In the example, the data come from ESRI rest service server. It is SanDiego city Road network data
+Write the following code and change the url address by the url address where you stored your network data. In the example, the data come from ESRI rest service server. It is SanDiego city Road network data. 
+
+I couldn't locate Tacoma city's network data,  I left the url link to the url of that of SanDiego. We have to replace this link with the url link of the data we are working on. 
 
 ```
 ClosestFacilityTask {
