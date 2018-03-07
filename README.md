@@ -13,7 +13,7 @@ Once you get your account, go to https://www.esri.com/landing-pages/appstudio do
 2. On upper right corner click New App On the Tittle give name of your app, I gave mine “Closest Hospital”. 
 3. From the three items under Sample, select Closest Facility, then click on create to create your app. 
 
-![image:new app dialog complete](Screenshots/Closest_Facility.png)
+![image:new app dialog complete](screenshots/closest_facility.png)
 
 4. Now go to the gallery and refresh. You should see your newly created app in ESRI App studio gallery. 
 5. Now we created a mobile app with one map screen with the default buttons and basemap (Topographic basemap).
