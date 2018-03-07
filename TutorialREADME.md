@@ -126,8 +126,8 @@ ClosestFacilityTask {
 ### Save and test for Errors
 Once you finished the code editing and writing
 1. Save your code
-2. Go to the apps gallery and open your app. If your app is built correctly, it will opens, if there is error in your code, error message outlining the code line where the error occured and possible cause of error will be displayed. Read the causes of the error, go back to the code and fix it.
+2. Go to the apps gallery and open your app. If your app is built correctly, it will open, if there is error in your code, error message outlining the code line where the error occured and possible cause of error will be displayed. Read the causes of the error, go back to the code and fix it.
 3. After fixing the error save your code and test it until you get rid of them. 
 
-After finishing the above outlined steps, we will come up with mobile app having the basic functionality to find the closest hospital from a point. 
+After finishing the above outlined steps, you will come up with mobile app having the basic functionality to find the closest hospital from a point. 
 
